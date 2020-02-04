@@ -4,11 +4,12 @@ import treescript.BranchTask
 import treescript.TreeTask
 import com.spaghetti.item_crusher.leaves.TraverseTo
 import org.rspeer.runetek.api.movement.position.Position
+import org.rspeer.ui.Log
 
 open class AtLocation(private val location: Position, private val successTask: TreeTask): BranchTask() {
 
     override fun validate(): Boolean {
-        return location.distance() <= 7
+        return location.distance() <= 20
     }
 
     override fun successTask(): TreeTask {
@@ -16,6 +17,7 @@ open class AtLocation(private val location: Position, private val successTask: T
     }
 
     override fun failureTask(): TreeTask {
+        Log.severe("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
         return TraverseTo(location)
     }
 

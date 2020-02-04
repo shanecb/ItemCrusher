@@ -13,7 +13,7 @@ class TraverseTo(destination: Position): LeafTask() {
 
     override fun execute(): Int {
         Movement.walkToRandomized(Random.nextElement(destination.tiles))
-        Time.sleep(300, 1350)
+        Time.sleep(450, 1350)
 
         return 0
     }

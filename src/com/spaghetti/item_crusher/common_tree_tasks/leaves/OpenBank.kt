@@ -10,8 +10,8 @@ class OpenBank: LeafTask() {
 
     override fun execute(): Int {
         Bank.open()
-        Time.sleepUntil({Bank.isOpen()}, 650)
-        return Random.nextInt(250, 450)
+        Time.sleepUntil({Bank.isOpen()}, 350)
+        return Random.nextInt(50, 150)
     }
 
 }

@@ -11,7 +11,7 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.rspeer/2.05.jar!/" />
+          <root url="jar://$USER_HOME$/.rspeer/2.19.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

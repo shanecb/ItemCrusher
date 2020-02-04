@@ -7,6 +7,7 @@ import com.spaghetti.item_crusher.entities.Constants
 import org.rspeer.runetek.api.commons.BankLocation
 import org.rspeer.runetek.api.commons.StopWatch
 import org.rspeer.runetek.api.component.tab.Inventory
+import org.rspeer.runetek.event.listeners.MouseInputListener
 import org.rspeer.runetek.event.listeners.RenderListener
 import org.rspeer.runetek.event.types.RenderEvent
 import org.rspeer.script.ScriptMeta
@@ -14,12 +15,22 @@ import org.rspeer.ui.Log
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.RenderingHints
+import java.awt.event.MouseEvent
 
 const val SCRIPT_AUTHOR = "spaghetti man"
 const val SCRIPT_NAME = "Spaghetti Item Crusher"
 
 @ScriptMeta(developer = SCRIPT_AUTHOR, name = SCRIPT_NAME, desc = "Crushes stuff")
-class ItemCrusher: TreeScript(), RenderListener {
+class ItemCrusher: TreeScript(), RenderListener, MouseInputListener {
+
+    // TODO -- remove this... just for debugging weird ghost clicks
+    override fun notify(p0: MouseEvent?) {
+        if (p0 == null) return
+
+        if (p0.id == MouseEvent.MOUSE_PRESSED || p0.id == MouseEvent.MOUSE_CLICKED) {
+            Log.severe("Mouse Clicked -- X: ${p0.x}, Y: ${p0.y}")
+        }
+    }
 
     companion object {
         var script: ItemCrusher? = null
@@ -41,6 +52,8 @@ class ItemCrusher: TreeScript(), RenderListener {
     }
 
     object Progress {
+        var hasBanked = false
+
         private val timer: StopWatch = StopWatch.start()
 
         val runtime: String
